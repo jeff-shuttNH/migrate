@@ -298,7 +298,8 @@ class HiveClient(ClustersClient):
         database_logfile = self.get_export_dir() + db_log
         if os.path.exists(success_metastore_log_path):
             os.remove(success_metastore_log_path)
-        all_dbs = self.get_all_databases(error_logger, cid, ec_id)
+        # all_dbs = self.get_all_databases(error_logger, cid, ec_id)
+        all_dbs = self.get_all_whitelisted_databases()
         resp = self.set_desc_database_helper(cid, ec_id)
         if self.is_verbose():
             logging.info(resp)
@@ -454,6 +455,19 @@ class HiveClient(ClustersClient):
                 all_dbs.append(db)
                 logging.info("Database: {0}".format(db))
         return all_dbs
+
+    @staticmethod
+    def get_all_whitelisted_databases():
+        file_path = "/whitelist"
+        logging.info("Using whitelist of databases at " + file_path)
+
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"File '{file_path}' does not exist.")
+
+        with open(file_path, "r") as f:
+            lines = f.readlines()
+
+        return [line.strip() for line in lines]
 
     def log_all_tables(self, db_name, cid, ec_id, metastore_dir, error_logger, success_log_path, iam,
                        checkpoint_metastore_set, has_unicode=False):
