@@ -433,8 +433,12 @@ class dbclient:
         bulk_export_dir = log_dir + 'artifacts/Users/'
         old_bulk_export_dir = bulk_export_dir + old_email_address
         new_bulk_export_dir = bulk_export_dir + new_email_address
+        print("old_bulk_export_dir: " + old_bulk_export_dir)
         if os.path.exists(old_bulk_export_dir):
+            print("It does exist, renaming")
             os.rename(old_bulk_export_dir, new_bulk_export_dir)
+            print(os.path.exists(old_bulk_export_dir))
+            print(os.path.exists(new_bulk_export_dir))
         # update the path for user notebooks in single user export mode
         single_user_dir = log_dir + 'user_exports/'
         old_single_user_dir = single_user_dir + old_email_address
