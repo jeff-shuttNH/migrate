@@ -8,8 +8,8 @@
       "spot_bid_price_percent": 100,
       "ebs_volume_count": 0
   },
-  "driver_node_type_id": "i3.xlarge",
-  "node_type_id": "i3.xlarge",
+  "driver_node_type_id": "i4i.xlarge",
+  "node_type_id": "i4i.xlarge",
   "spark_env_vars": {
       "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
   },

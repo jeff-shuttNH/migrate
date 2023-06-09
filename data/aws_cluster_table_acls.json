@@ -18,8 +18,8 @@
     "ebs_volume_count": 1,
     "ebs_volume_size": 100
   },
-  "driver_node_type_id": "m4.xlarge",
-  "node_type_id": "m4.xlarge",
+  "driver_node_type_id": "m5.xlarge",
+  "node_type_id": "m5.xlarge",
   "spark_env_vars": {
     "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
   },
